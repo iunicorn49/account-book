@@ -1,3 +1,13 @@
+## Note
+
+### 代码文件结构, 代码和文件命名规范
+
+- **components** 文件夹存放所有的展示型组件.
+- **containers** 文件夹存放所有的容器型组件.
+- 两个文件夹下都有 `__test__` 文件夹存放组件测试文件.
+- 文件使用 **Pascal Case** 命名法, 首字母大写, 后续每个单词首字母都大写.
+- **src** 根目录下放统一使用的一些文件.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
