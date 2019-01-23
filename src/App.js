@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import PriceList from './components/PriceList'
 import ViewTab from './components/ViewTab'
 import { LIST_VIEW, CHART_VIEW } from './utility.js'
+import TotalPrice from './components/TotalPrice'
 
 const items = [
   {
@@ -54,6 +55,7 @@ class App extends Component {
         </header>
         <PriceList onDeleteItem={(item) => {console.error(item)}} onModifyItem={(item) => {console.log(item)}} items={items} />
         <ViewTab activeTab={LIST_VIEW} onTabChange={(view) => {}} />
+        <TotalPrice />
       </div>
     );
   }
