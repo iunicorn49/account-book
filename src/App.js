@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import PriceList from './components/PriceList'
 import ViewTab from './components/ViewTab'
+import MonthPicker from './components/MonthPicker'
 import { LIST_VIEW, CHART_VIEW } from './utility.js'
 
 const items = [
@@ -38,7 +39,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -51,7 +52,8 @@ class App extends Component {
           >
             Learn React
           </a>
-        </header>
+        </header> */}
+        <MonthPicker year={2011} month={1} onChange={({year, month}) => {console.log({year, month})}}/>
         <PriceList onDeleteItem={(item) => {console.error(item)}} onModifyItem={(item) => {console.log(item)}} items={items} />
         <ViewTab activeTab={LIST_VIEW} onTabChange={(view) => {}} />
       </div>
@@ -59,4 +61,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
