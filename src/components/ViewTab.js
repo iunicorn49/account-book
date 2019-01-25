@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import { LIST_VIEW, CHART_VIEW } from '../utility'
 
 const generateLinkClass = (current, view) => {
-	return (current === view) ? 'nav-link-active' : 'nav-link'
+	return (current === view) ? 'nav-link active' : 'nav-link'
 }
 const ViewTab = ({ activeTab, onTabChange }) => (
 	<ul className="nav nav-tabs nav-fill my-4">
 		<li className="nav-item">
-			<a  onClick={(event) => {event.preventDefault(); onTabChange(LIST_VIEW)}} className={generateLinkClass(activeTab, LIST_VIEW)} role="button">
+			<a onClick={(event) => {event.preventDefault(); onTabChange(LIST_VIEW)}} className={generateLinkClass(activeTab, LIST_VIEW)} href="#">
 				<Ionicon 
 					className="rounded-circle mr-2" 
 					fontSize="25px" 
@@ -20,7 +20,7 @@ const ViewTab = ({ activeTab, onTabChange }) => (
 			</a>
 		</li>
 		<li className="nav-item">
-			<a onClick={(event) => {event.preventDefault(); onTabChange(CHART_VIEW)}}  className={generateLinkClass(activeTab, CHART_VIEW)} role="button">
+			<a onClick={(event) => {event.preventDefault(); onTabChange(CHART_VIEW)}}  className={generateLinkClass(activeTab, CHART_VIEW)} href="#">
 				<Ionicon 
 					className="rounded-circle mr-2" 
 					fontSize="25px" 

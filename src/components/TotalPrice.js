@@ -2,9 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const TotalPrice = ({ income, outcome }) => (
-	<div className="d-flex justify-content-between align-items-center">
-		<span className="col-3">支出:&nbsp;{outcome}</span>
-		<span className="col-3">支出:&nbsp;{income}</span>
+	<div className="row">
+		<div className="col">
+			<h5 className="income">收入：<span>{income}</span></h5>
+		</div>
+		<div className="col">
+			<h5 className="outcome">支出：<span>{outcome}</span></h5>
+		</div>
 	</div>
 )
 
