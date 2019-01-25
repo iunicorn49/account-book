@@ -6,8 +6,8 @@ const PriceList = ({ items, onModifyItem, onDeleteItem }) => {
 	return (
 		<ul className="list-group list-group-flush">
 			{
-				items.map((item) => (
-					<li key={item.id} className="list-group-item d-flex justify-content-between align-items-center">
+				items.map((item, index) => (
+					<li key={index} className="list-group-item d-flex justify-content-between align-items-center">
 						<span className="col-1">
 							<Ionicon
 								className="rounded-circle" 

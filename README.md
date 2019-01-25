@@ -10,6 +10,42 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### 测试
+
+#### 测试框架 Jest
+
+- 通用的测试框架, 支持多平台.
+- 测试速度快.
+- 内置总结覆盖率.
+
+```javascript
+test('测试相等', () => {
+	expect(2 + 2).toBe(4)
+})
+
+test('测试不相等', () => {
+	expect(2 + 2).not.toBe(5)
+})
+
+test('测试布尔值', () => {
+	expect(1).toBeTruthy()
+	expect(0).toBeFalsy()
+})
+
+test('测试数值', () => {
+	expect(4).toBeGreaterThan(3)
+	expect(4).toBeLessThan(5)
+})
+
+test('测试对象', () => {
+	expect({ name: 'zlk', age: 30 }).toEqual({ name: 'zlk', age: 30 })
+})
+```
+
+#### Enzyme 
+
+> 基于React官方测试工具 - ReactTestUtils 的封装, Airbnb出品.
+
 ## Available Scripts
 
 In the project directory, you can run:
