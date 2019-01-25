@@ -11,9 +11,6 @@ class MonthPicker extends Component {
       selectedMonth: props.month
     }
   }
-  componentDidMount() {
-
-  }
   toggleDropdown = (event) => {
     event.preventDefault()
     this.setState({
@@ -38,7 +35,7 @@ class MonthPicker extends Component {
     })
   }
   render() {
-    const { year, month } = this.props
+    const { year } = this.props
     const { isOpen, selectedYear, selectedMonth } = this.state
     const monthRange = range(12, 1)
     const yearRange = range(9, -4).map(item => item + year)
@@ -57,7 +54,7 @@ class MonthPicker extends Component {
             <div className="row">
               <div className="col border-right">
                 { yearRange.map((item, index) => 
-                  <a href="#" key={index} 
+                  <a role="button" key={index} 
                     className={(item === selectedYear ? 'dropdown-item active' : 'dropdown-item')}
                     onClick={(event) => this.selectYear(event, item)}
                   >{item}年</a>
@@ -65,7 +62,7 @@ class MonthPicker extends Component {
               </div>
               <div className="col">
                 { monthRange.map((item, index) => 
-                  <a href="#" key={index} 
+                  <a role="button" key={index} 
                     onClick={(event) => this.selectMonth(event, item)}
                     className={(item === selectedMonth ? 'dropdown-item active' : 'dropdown-item')}
                   >{padLeft(item)}月</a>

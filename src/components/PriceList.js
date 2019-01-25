@@ -23,7 +23,7 @@ const PriceList = ({ items, onModifyItem, onDeleteItem }) => {
 							{item.price}元
 						</span>
 						<span className="col-2">{item.date}</span>
-						<a href="#" onClick={() => {onModifyItem(item)}} className="col-1">
+						<a role="button" onClick={() => {onModifyItem(item)}} className="col-1">
 							<Ionicon 
 								className="rounded-circle" 
 								fontSize="30px" 
@@ -32,7 +32,7 @@ const PriceList = ({ items, onModifyItem, onDeleteItem }) => {
 								icon="ios-create-outline"
 							/>
 						</a>
-						<a href="#" onClick={() => {onDeleteItem(item)}} className="col-1">
+						<a role="button" onClick={() => {onDeleteItem(item)}} className="col-1">
 							<Ionicon 
 								className="rounded-circle" 
 								fontSize="30px" 
