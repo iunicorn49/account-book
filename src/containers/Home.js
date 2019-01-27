@@ -26,7 +26,7 @@ class Home extends Component {
 		super(props)
 		this.state = {
 			items,
-			currentDate: parseToYearAndMonth(),
+			currentDate: parseToYearAndMonth('2019/01/01'),
 			tabView: LIST_VIEW
 		}
 	}
@@ -69,7 +69,7 @@ class Home extends Component {
 					}
 					{
 						tabView === CHART_VIEW &&
-						<div>图标</div>
+						<div className="chart-title">图表</div>
 					}
 				</div>
 			</Fragment>

@@ -42,7 +42,7 @@ class MonthPicker extends Component {
     event.preventDefault()
     this.setState({
       selectedMonth: monthNumber,
-      isOpen: true,
+      isOpen: false,
     })
     this.props.onChange({
       year: this.state.selectedYear,
@@ -75,7 +75,7 @@ class MonthPicker extends Component {
                   >{item}年</a>
                 ) }
               </div>
-              <div className="col">
+              <div className="col month-range">
                 { monthRange.map((item, index) => 
                   <a role="button" key={index} 
                     onClick={(event) => this.selectMonth(event, item)}
