@@ -8,7 +8,7 @@ import Create from './containers/Create'
 import MyTest from './containers/MyTest'
 
 import { testCategories, testItems } from './data'
-import { flatternArr } from './utility'
+import { flatternArr, ID, parseToYearAndMonth } from './utility'
 
 export const AppContext = React.createContext()
 
@@ -19,11 +19,29 @@ class App extends Component {
       items: flatternArr(testItems),
       categories: flatternArr(testCategories)
     }
+    this.actions = {
+      deleteItem: (item) => {
+        const { items } = this.state
+        delete items[item.id]
+        this.setState({items})
+      },
+      createItem: (data, categoryId) => {
+        const newId = ID()
+        const parseDate = parseToYearAndMonth(data.date)
+        data.monthCategory = `${parseDate.year}-${parseDate.month}`
+        data.timestamp = new Date(data.date).getTime()
+        const newItem = {...data, id: newId, cid: categoryId}
+        this.setState({
+          items: {...this.state.items, [newId]: newItem}
+        })
+      }
+    }
   }
   render() {
     const state = this.state
+    const actions = this.actions
     return (
-      <AppContext.Provider value={{state}}>
+      <AppContext.Provider value={{state, actions}}>
         <Router>
           <div className="App">
             <div className="link-wrapper">
