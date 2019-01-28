@@ -6,10 +6,11 @@ import {
 	parseToYearAndMonth, padLeft
 } from '../utility.js'
 import PriceList from '../components/PriceList'
-import ViewTab from '../components/ViewTab'
 import MonthPicker from '../components/MonthPicker'
 import TotalPrice from '../components/TotalPrice'
 import CreateBtn from '../components/CreateBtn'
+import Tabs, { Tab } from '../components/Tabs'
+import Ionicon from 'react-ionicons'
 
 import { items, categoies } from '../data'
 
@@ -21,6 +22,7 @@ const newItem = {
 	"cid": "1"
 }
 
+const tabsText = [LIST_VIEW, CHART_VIEW]
 class Home extends Component {
 	constructor(props) {
 		super(props)
@@ -61,7 +63,26 @@ class Home extends Component {
 					</div>
 				</header>
 				<div className="content-area py-3 px-3">
-					<ViewTab activeTab={tabView} onTabChange={this.changeView} />
+					<Tabs activeIndex={0} onTabChange={this.changeView}>
+						<Tab>
+							<Ionicon 
+								className="rounded-circle mr-2" 
+								fontSize="25px" 
+								color="#007bff" 
+								icon="ios-paper"
+							/>
+							列表模式
+						</Tab>
+						<Tab>
+							<Ionicon 
+								className="rounded-circle mr-2" 
+								fontSize="25px" 
+								color="#007bff" 
+								icon="ios-pie"
+							/>
+							图表模式
+						</Tab>
+					</Tabs>
 					<CreateBtn onClick={this.createItem} />
 					{
 						tabView === LIST_VIEW &&
@@ -76,9 +97,9 @@ class Home extends Component {
 		)
 	} // render
 
-	changeView = (view) => {
+	changeView = (index) => {
 		this.setState({
-			tabView: view
+			tabView: tabsText[index]
 		})
 	}
 

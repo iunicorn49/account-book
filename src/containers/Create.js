@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
+import PriceForm from '../components/PriceForm'
 
-const Create = ({match}) => {
-  return <h1>第二个页面 {match.params.id}</h1>
+class Create extends Component {
+  onFormSubmit = () => {
+
+  }
+  onCancelSubmit = () => {
+    
+  }
+  render() {
+    return (
+      <Fragment>
+        <PriceForm onFormSubmit={this.onFormSubmit} onCancelSubmit={this.onCancelSubmit} />
+      </Fragment>
+    )
+  }
 }
 
 export default Create
