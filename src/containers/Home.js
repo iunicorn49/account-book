@@ -13,6 +13,7 @@ import Tabs, { Tab } from '../components/Tabs'
 import Ionicon from 'react-ionicons'
 
 import { items, categoies } from '../data'
+import { AppContext } from '../App'
 
 const newItem = {
 	"id": 1,
@@ -49,51 +50,57 @@ class Home extends Component {
 			}
 		})
 		return (
-			<Fragment>
-				<header className="App-header">
-					<div className="row mb-5 justify-content-center">
-						<img src={logo} className="App-logo" alt="logo" />
-					</div>
-					<div className="row">
-						<div className="col">
-							<MonthPicker year={currentDate.year} month={currentDate.month} onChange={this.changeDate}/></div>
-						<div className="col">
-							<TotalPrice income={totalIncome} outcome={totalOutcome} />
+			<AppContext.Consumer>
+      {({state}) => {
+        return (
+					<Fragment>
+						<header className="App-header">
+							<div className="row mb-5 justify-content-center">
+								<img src={logo} className="App-logo" alt="logo" />
+							</div>
+							<div className="row">
+								<div className="col">
+									<MonthPicker year={currentDate.year} month={currentDate.month} onChange={this.changeDate}/></div>
+								<div className="col">
+									<TotalPrice income={totalIncome} outcome={totalOutcome} />
+								</div>
+							</div>
+						</header>
+						<div className="content-area py-3 px-3">
+							<Tabs activeIndex={0} onTabChange={this.changeView}>
+								<Tab>
+									<Ionicon 
+										className="rounded-circle mr-2" 
+										fontSize="25px" 
+										color="#007bff" 
+										icon="ios-paper"
+									/>
+									列表模式
+								</Tab>
+								<Tab>
+									<Ionicon 
+										className="rounded-circle mr-2" 
+										fontSize="25px" 
+										color="#007bff" 
+										icon="ios-pie"
+									/>
+									图表模式
+								</Tab>
+							</Tabs>
+							<CreateBtn onClick={this.createItem} />
+							{
+								tabView === LIST_VIEW &&
+								<PriceList onDeleteItem={this.deleteItem} onModifyItem={this.modifyItem} items={itemWithCategory} />
+							}
+							{
+								tabView === CHART_VIEW &&
+								<div className="chart-title">图表</div>
+							}
 						</div>
-					</div>
-				</header>
-				<div className="content-area py-3 px-3">
-					<Tabs activeIndex={0} onTabChange={this.changeView}>
-						<Tab>
-							<Ionicon 
-								className="rounded-circle mr-2" 
-								fontSize="25px" 
-								color="#007bff" 
-								icon="ios-paper"
-							/>
-							列表模式
-						</Tab>
-						<Tab>
-							<Ionicon 
-								className="rounded-circle mr-2" 
-								fontSize="25px" 
-								color="#007bff" 
-								icon="ios-pie"
-							/>
-							图表模式
-						</Tab>
-					</Tabs>
-					<CreateBtn onClick={this.createItem} />
-					{
-						tabView === LIST_VIEW &&
-						<PriceList onDeleteItem={this.deleteItem} onModifyItem={this.modifyItem} items={itemWithCategory} />
-					}
-					{
-						tabView === CHART_VIEW &&
-						<div className="chart-title">图表</div>
-					}
-				</div>
-			</Fragment>
+					</Fragment>
+				)
+			}}
+			</AppContext.Consumer>
 		)
 	} // render
 

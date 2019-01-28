@@ -49,3 +49,13 @@ a[href="#"], a[href="#0"] /* Common patterns for the <a> element used as a butto
   background: #007bff;
   fill: #fff;
 }
+
+.link-wrapper {
+  display: flex;
+}
+
+.link-item {
+  flex: auto;
+  padding: 4px 8px;
+  color: #585858;
+}
