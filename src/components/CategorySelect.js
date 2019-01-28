@@ -10,11 +10,11 @@ class CategorySelect extends Component {
     }
   }
   selectCategory = (event, category) => {
-    event.preventDefault()
     this.setState({
       selectedCategoryId: category.id
     })
     this.props.onSelectCategory(category)
+    event.preventDefault()
   }
   render() {
     const { categories, selectedCategory } = this.props

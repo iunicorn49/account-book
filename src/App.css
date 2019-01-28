@@ -35,3 +35,17 @@ a[href="#"], a[href="#0"] /* Common patterns for the <a> element used as a butto
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.create-page {
+  background: #fff;
+}
+
+.category-item svg {
+  background: #f2f2f2;
+  fill: #555;
+}
+
+.category-item.active svg {
+  background: #007bff;
+  fill: #fff;
+}
