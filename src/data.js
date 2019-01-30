@@ -131,8 +131,8 @@ export const testItems = [
   {
     "title": "请别人吃饭",
     "price": 300,
-    "date": "2018-11-15",
-    "monthCategory": "2018-11",
+    "date": "2019-01-15",
+    "monthCategory": "2019-1",
     "id": "_qryggm511",
     "cid": "3",
     "timestamp": 1534291200000

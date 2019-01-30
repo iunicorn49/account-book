@@ -10,13 +10,15 @@ import { TYPE_INCOME, TYPE_OUTCOME } from '../utility'
 import withContext from '../withContext'
 import { timingSafeEqual } from 'crypto';
 
-const tabsText = [TYPE_INCOME, TYPE_OUTCOME ]
+const tabsText = [TYPE_OUTCOME, TYPE_INCOME]
 class Create extends Component {
   constructor(props) {
     super(props)
+    const { id } = props.match.params
+    const { categories, items } = props.data
     this.state = {
-      selectedTab: TYPE_OUTCOME,
-      selectedCategory: null,
+      selectedTab: (id && items[id]) ? categories[items[id].cid].type : TYPE_OUTCOME,
+      selectedCategory: (id && items[id]) ? categories[items[id].cid] : null,
       validationPassed: true,
     }
   }
@@ -35,7 +37,7 @@ class Create extends Component {
     if (!isEditMode) {
       this.props.actions.createItem(data, this.state.selectedCategory.id)
     } else {
-
+      this.props.actions.updateItem(data, this.state.selectedCategory.id)
     }
     this.cancelSubmit()
   }
@@ -51,18 +53,21 @@ class Create extends Component {
   render() {
     const { data } = this.props
     const { items, categories } = data
-    const { selectedTab, validationPassed } = this.state
+    const { id } = this.props.match.params
+    const editItem = (id && items[id]) ? items[id] : {}
+    const { selectedTab, validationPassed, selectedCategory } = this.state
     const filterCategories = Object.keys(categories)
     .filter(id => categories[id].type === selectedTab)
     .map(id => categories[id])
+    const tabIndex = tabsText.findIndex(text => text === selectedTab)
     return (
       <div className="create-page py-3 px-3 rounded mt-3">
-        <Tabs activeIndex={0} onTabChange={this.tabChange}>
+        <Tabs activeIndex={tabIndex} onTabChange={this.tabChange}>
           <Tab>支出</Tab>
           <Tab>收入</Tab>
         </Tabs>
-        <CategorySelect categories={filterCategories} onSelectCategory={this.selectCategory} /> 
-        <PriceForm onFormSubmit={this.formSubmit} onCancelSubmit={this.cancelSubmit} />
+        <CategorySelect selectedCategory={selectedCategory} categories={filterCategories} onSelectCategory={this.selectCategory} /> 
+        <PriceForm onFormSubmit={this.formSubmit} onCancelSubmit={this.cancelSubmit} item={editItem} />
         { !validationPassed &&
           <div className="alert alert-danger mt-5" role="alert">
             请选择分类信息
