@@ -99,15 +99,6 @@
   ],
   "items": [
     {
-      "title": "再次更新标题",
-      "price": 2000,
-      "date": "2019-01-15",
-      "monthCategory": "2019-1",
-      "id": "_qmatbbwq0",
-      "cid": "6",
-      "timestamp": 1536969600000
-    },
-    {
       "title": "新的吃饭",
       "price": 2000,
       "date": "2019-01-15",
@@ -117,19 +108,10 @@
       "timestamp": 1542896269187
     },
     {
-      "title": "请别人喝茶",
-      "price": 300,
-      "date": "2019-02-15",
-      "monthCategory": "2018-2",
-      "id": "_qryggm533",
-      "cid": "3",
-      "timestamp": 1534291200000
-    },
-    {
       "title": "饭局",
       "price": 200,
       "date": "2019-02-15",
-      "monthCategory": "2018-2",
+      "monthCategory": "2019-2",
       "id": "_qmatbbw12",
       "cid": "6",
       "timestamp": 1544400000000
@@ -138,7 +120,7 @@
       "title": "饭局第二个",
       "price": 300,
       "date": "2019-02-15",
-      "monthCategory": "2018-2",
+      "monthCategory": "2019-2",
       "id": "_qmatbbw22",
       "cid": "6",
       "timestamp": 1544400000000
@@ -147,7 +129,7 @@
       "title": "兼职收入",
       "price": 500,
       "date": "2019-02-15",
-      "monthCategory": "2018-2",
+      "monthCategory": "2019-2",
       "timestamp": 1543968000000,
       "id": "_2cdxkbtzi",
       "cid": "11"
@@ -156,7 +138,7 @@
       "title": "收入",
       "price": 100,
       "date": "2019-02-15",
-      "monthCategory": "2018-2",
+      "monthCategory": "2019-2",
       "timestamp": 1543968000000,
       "id": "_znmwyaciy",
       "cid": "12"
@@ -165,7 +147,7 @@
       "title": "汽车保养",
       "price": 500,
       "date": "2019-02-15",
-      "monthCategory": "2018-2",
+      "monthCategory": "2019-2",
       "timestamp": 1544313600000,
       "id": "_2c96vz8d7",
       "cid": "7"
@@ -174,7 +156,7 @@
       "title": "宠物美容",
       "price": 200,
       "date": "2019-02-15",
-      "monthCategory": "2018-2",
+      "monthCategory": "2019-2",
       "timestamp": 1544140800000,
       "id": "_dgqbpp4z8",
       "cid": "9"
@@ -183,25 +165,16 @@
       "title": "超市购物",
       "price": 125,
       "date": "2019-02-15",
-      "monthCategory": "2018-2",
+      "monthCategory": "2019-2",
       "timestamp": 1543881600000,
       "id": "_j0z9no9jk",
       "cid": "3"
     },
     {
-      "title": "购买 iphone XR",
-      "price": 6000,
-      "date": "2019-02-15",
-      "monthCategory": "2018-2",
-      "timestamp": 1543795200000,
-      "id": "_yiwdttati",
-      "cid": "4"
-    },
-    {
       "title": "入账工资",
       "price": 25000,
       "date": "2019-02-15",
-      "monthCategory": "2018-2",
+      "monthCategory": "2019-2",
       "timestamp": 1544227200000,
       "id": "_dotug7vnn",
       "cid": "10",
@@ -211,6 +184,15 @@
         "id": "10",
         "type": "income"
       }
+    },
+    {
+      "title": "灰机22",
+      "price": 2222,
+      "date": "2019-01-31",
+      "monthCategory": "2019-1",
+      "timestamp": 1548892800000,
+      "id": "_6u72bkuig",
+      "cid": "12"
     }
   ]
 }

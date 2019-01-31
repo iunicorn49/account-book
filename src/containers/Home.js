@@ -14,6 +14,7 @@ import Tabs, { Tab } from '../components/Tabs'
 import Ionicon from 'react-ionicons'
 
 import withContext from '../withContext'
+import Loader from '../components/Loader'
 
 const tabsText = [LIST_VIEW, CHART_VIEW]
 class Home extends Component {
@@ -22,18 +23,19 @@ class Home extends Component {
 		const { items } = props.data
 		this.state = {
 			items,
-			currentDate: parseToYearAndMonth('2019/01/28'),
 			tabView: LIST_VIEW
 		}
 	}
+	componentDidMount() {
+		this.props.actions.getInitalData()
+	}
 	render() {
-		const { items, currentDate, tabView } = this.state
-		const { categories } = this.props.data
+		const { tabView } = this.state
+		const { items, categories, currentDate, isLoading } = this.props.data
+		const { selectNewMonth } = this.props.actions
 		const itemWithCategory = Object.keys(items).map(id => {
 			items[id].category = categories[items[id].cid]
 			return items[id]
-		}).filter(item => {
-			return item.date.includes(`${currentDate.year}-${padLeft(currentDate.month)}`)
 		})
 		let totalIncome = 0, totalOutcome = 0
 		itemWithCategory.forEach((item) => {
@@ -51,7 +53,7 @@ class Home extends Component {
 					</div>
 					<div className="row">
 						<div className="col">
-							<MonthPicker year={currentDate.year} month={currentDate.month} onChange={this.changeDate}/></div>
+							<MonthPicker year={currentDate.year} month={currentDate.month} onChange={selectNewMonth}/></div>
 						<div className="col">
 							<TotalPrice income={totalIncome} outcome={totalOutcome} />
 						</div>
@@ -80,12 +82,21 @@ class Home extends Component {
 					</Tabs>
 					<CreateBtn onClick={this.createItem} />
 					{
-						tabView === LIST_VIEW &&
-						<PriceList onDeleteItem={this.deleteItem} onModifyItem={this.modifyItem} items={itemWithCategory} />
+						isLoading &&
+						<Loader />
 					}
 					{
-						tabView === CHART_VIEW &&
-						<div className="chart-title">图表</div>
+						!isLoading &&
+						<Fragment>
+						{
+							tabView === LIST_VIEW &&
+							<PriceList onDeleteItem={this.deleteItem} onModifyItem={this.modifyItem} items={itemWithCategory} />
+						}
+						{
+							tabView === CHART_VIEW &&
+							<div className="chart-title">图表</div>
+						}
+						</Fragment>
 					}
 				</div>
 			</Fragment>
@@ -95,12 +106,6 @@ class Home extends Component {
 	changeView = (index) => {
 		this.setState({
 			tabView: tabsText[index]
-		})
-	}
-
-	changeDate = ({year, month}) => {
-		this.setState({
-			currentDate: {year, month}
 		})
 	}
 
