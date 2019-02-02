@@ -18,6 +18,23 @@ import Loader from '../components/Loader'
 
 import Charts from '../components/Charts'
 
+const generateChartDataByCategory = (items, type = TYPE_INCOME) => {
+	let categoryMap = {}
+	items.filter(item => item.category.type === type).forEach(item => {
+		if (categoryMap[item.cid]) {
+			categoryMap[item.cid].value += (+item.price)
+			categoryMap[item.cid].items.push(item.id)
+		} else {
+			categoryMap[item.cid] = {
+				name: item.category.name,
+				value: +item.price,
+				items: [item.id]
+			}
+		}
+	})
+	return Object.values(categoryMap)
+}
+
 const tabsText = [LIST_VIEW, CHART_VIEW]
 class Home extends Component {
 	constructor(props) {
@@ -47,6 +64,8 @@ class Home extends Component {
 				totalOutcome += item.price
 			}
 		})
+		const chartOutcomeDataByCategory = generateChartDataByCategory(itemWithCategory, TYPE_OUTCOME)
+		const chartIncomeDataByCategory = generateChartDataByCategory(itemWithCategory, TYPE_INCOME)
 		const activeIndex = tabsText.findIndex(item => item === tabView)
 		return (
 			<Fragment>
@@ -97,7 +116,10 @@ class Home extends Component {
 						}
 						{
 							tabView === CHART_VIEW &&
-							<Charts />
+							<Fragment>
+								<Charts title="本月支出" categoryData={chartOutcomeDataByCategory} />
+								<Charts title="本月收入" categoryData={chartIncomeDataByCategory} />
+							</Fragment>
 						}
 						</Fragment>
 					}
