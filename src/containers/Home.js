@@ -16,6 +16,8 @@ import Ionicon from 'react-ionicons'
 import withContext from '../withContext'
 import Loader from '../components/Loader'
 
+import Charts from '../components/Charts'
+
 const tabsText = [LIST_VIEW, CHART_VIEW]
 class Home extends Component {
 	constructor(props) {
@@ -23,7 +25,7 @@ class Home extends Component {
 		const { items } = props.data
 		this.state = {
 			items,
-			tabView: LIST_VIEW
+			tabView: CHART_VIEW
 		}
 	}
 	componentDidMount() {
@@ -45,6 +47,7 @@ class Home extends Component {
 				totalOutcome += item.price
 			}
 		})
+		const activeIndex = tabsText.findIndex(item => item === tabView)
 		return (
 			<Fragment>
 				<header className="App-header">
@@ -60,7 +63,7 @@ class Home extends Component {
 					</div>
 				</header>
 				<div className="content-area py-3 px-3">
-					<Tabs activeIndex={0} onTabChange={this.changeView}>
+					<Tabs activeIndex={activeIndex} onTabChange={this.changeView}>
 						<Tab>
 							<Ionicon 
 								className="rounded-circle mr-2" 
@@ -94,7 +97,7 @@ class Home extends Component {
 						}
 						{
 							tabView === CHART_VIEW &&
-							<div className="chart-title">图表</div>
+							<Charts />
 						}
 						</Fragment>
 					}
